@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.venv/
+env/
+*.sqlite3
+*.db
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python egg
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Coverage
+htmlcov/
+.coverage
+
+# Byte-compiled / C extensions
+*.so
+
+# FastAPI / Uvicorn
+*.pid
