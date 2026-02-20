@@ -8,6 +8,24 @@ OPEN_AI_KEY = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=OPEN_AI_KEY)
 
+def generate_weekly_review(context: str) -> str:
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a productivity coach analyzing weekly study sessions."
+            },
+            {
+                "role": "user",
+                "content": f"Analyze the following study sessions and provide insights:\n\n{context}"
+            }
+        ],
+        temperature=0.7,
+    )
+
+    return response.choices[0].message.content
+
 def generate_summary(session_notes: str):
     """
     Genera un resumen inteligente de una sesión de estudio utilizando OpenAI.
