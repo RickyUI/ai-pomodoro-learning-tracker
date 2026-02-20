@@ -61,21 +61,18 @@ Optional:
 ```
 app/
 │
-├── main.py
-├── database.py
-├── models.py
-├── schemas.py
+├── main.py        # FastAPI app, routers
+├── database.py    # DB connection, session
+├── models.py      # SQLAlchemy ORM models
+├── schemas.py     # Pydantic schemas
 │
-├── routers/
+├── routers/       # API endpoints
 │   ├── sessions.py
 │   ├── review.py
 │   └── stats.py
 │
-├── services/
-│   └── ai_service.py
-│
-└── crud/
-    └── session_crud.py
+└── services/
+    └── ai_service.py  # Lógica AI/RAG
 ```
 
 ### Architecture Principles
