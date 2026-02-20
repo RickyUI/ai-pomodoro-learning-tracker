@@ -13,6 +13,16 @@ router = APIRouter()
 async def read_all_sessions(db: db_dependency):
     return db.query(models.StudySession).all()
 
+
+@router.get("/sessions/{session_id}", response_model=schemas.StudySession, status_code=status.HTTP_200_OK)
+async def read_session_by_id(db: db_dependency, session_id: int):
+    model = db.query(models.StudySession).filter(models.StudySession.id == session_id).first()
+
+    if model is None:
+        raise HTTPException(status_code=404, detail="Session not found.")
+    
+    return model
+
     
 # Endpoint que recibe POST del usuario y almacena en la DB, ademas devuelve los valores agregados
 @router.post("/sessions", response_model=schemas.StudySession, status_code=status.HTTP_201_CREATED)

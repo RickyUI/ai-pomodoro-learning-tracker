@@ -21,3 +21,8 @@ class StudySession(StudySessionCreate):
 
     class Config:
         from_attributes = True
+    
+class StudyStats(BaseModel):
+    total_sessions: int
+    total_minutes: int
+    average_duration: float

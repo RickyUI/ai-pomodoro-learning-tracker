@@ -173,7 +173,6 @@ Returns computed statistics:
   "total_sessions": 12,
   "total_minutes": 320,
   "average_duration": 26.6,
-  "most_frequent_topic": "FastAPI"
 }
 ```
 
