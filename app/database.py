@@ -1,5 +1,7 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker, Session
+from fastapi import Depends
+from typing import Annotated
 
 DATABASE_URL = "sqlite:///./study_tracker.db" # Creamos la URL de la database
 
@@ -24,3 +26,5 @@ def get_db():
         yield db
     finally:
         db.close()
+
+db_dependency = Annotated[Session, Depends(get_db)]

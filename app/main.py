@@ -1,12 +1,13 @@
 from fastapi import FastAPI, Depends
-from .database import engine, get_db
+from .database import engine, get_db, db_dependency
 from .models import Base
-from typing import Annotated
 from sqlalchemy.orm import Session
+from .routers import sessions
 
-app = FastAPI()
-
-db_dependency = Annotated[Session, Depends(get_db)] # Encapsular la dependencia para reutilizar
+app = FastAPI(title="Learning Tracker")
 
 # Crea las tablas automaticamente
 Base.metadata.create_all(bind=engine)
+
+# Registrar routers
+app.include_router(sessions.router, prefix="", tags=["Study Sessions"])
